@@ -1,0 +1,33 @@
+# 1.
+awk '$2 == "ERROR" {print $1, $4}' log.txt
+
+# 2.
+awk 'NR>1 {math+=$2; science+=$3; english+=$4; count++} 
+     END {print "Math Avg:", math/count, "\nScience Avg:", science/count, "\nEnglish Avg:", english/count}' scores.csv
+
+# 3.
+awk '{print $1}' server.log | sort | uniq -c | sort -nr
+
+# 4.
+sed -E 's/^([^ ]+) (.*) ([^ ]+)$/\3 \2 \1/' text.txt
+
+# 5.
+sed -E 's/\b([a-zA-Z]+) \1\b/\1/g' duplicate_words.txt
+
+# 6.
+sed -E 's/^[^@]+/****/' emails.txt
+
+# 7.
+tr -s '[:space:]' '\n' < textfile.txt | sort | uniq -c | sort -nr | head -n1
+
+# 8.
+echo "Extracting unique lines (case-insensitive):"
+sort -f textfile.txt | uniq -i
+echo "Extracting unique lines (case-sensitive):"
+sort textfile.txt | uniq
+
+# 9.
+awk '{for (i=NF; i>0; i--) printf "%s ", $i; print ""}' textfile.txt
+
+# 10.
+awk '{if (length > max_length) {max_length = length; longest = $0}} END {print "Longest line:", longest, "\nLength:", max_length}' textfile.txt
