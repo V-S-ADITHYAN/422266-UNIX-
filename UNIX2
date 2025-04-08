@@ -27,8 +27,3 @@ ls -l "hello world"
 # 9.
 echo "Interpreting \$HOME: I love $HOME"
 echo 'Literal text: I love $HOME'
-
-# 10.
-touch "file\\with\\slashes"
-echo "Listing 'file\with\slashes':"
-ls -l file\\with\\slashes
