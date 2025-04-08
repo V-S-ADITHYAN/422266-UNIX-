@@ -1,10 +1,29 @@
+#1.
 mkdir ADITHYAN
+
+#2.
 mkdir ADITHYAN/ARJUN
+
+#3
 cd ADITHYAN/ARJUN
+
+#4
 cal
+
+#5
 ls ..
+
+#6
 who | wc -l
+
+#7
 echo "ADITHYAN" | figlet
+
+#8
 tty
+
+#9
 cd /
+
+#10
 cd ADITHYAN/exercises
