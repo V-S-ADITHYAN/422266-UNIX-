@@ -1,0 +1,34 @@
+# 1.
+ls -l a*
+
+# 2.
+ls -l *.txt
+
+# 3.
+ls -l ????? 2>/dev/null
+
+# 4.
+ls -l [b-e]* 2>/dev/null
+
+# 5.
+ls -l ?[0-9].log 2>/dev/null
+
+# 6.
+ls -l data? 2>/dev/null
+
+# 7.
+ls -l | grep -E 'file.*report|report.*file'
+
+# 8.
+touch "hello world"
+echo "Listing 'hello world':"
+ls -l "hello world"
+
+# 9.
+echo "Interpreting \$HOME: I love $HOME"
+echo 'Literal text: I love $HOME'
+
+# 10.
+touch "file\\with\\slashes"
+echo "Listing 'file\with\slashes':"
+ls -l file\\with\\slashes
