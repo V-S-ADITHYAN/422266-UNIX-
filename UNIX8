@@ -1,0 +1,46 @@
+# Enable core dumps
+ulimit -c unlimited
+echo "Core dumps enabled."
+
+# Create a C program that causes a segmentation fault
+cat <<EOF > crash.c
+#include <stdio.h>
+#include <stdlib.h>
+
+void cause_segfault() {
+    int *ptr = NULL;  // Null pointer
+    *ptr = 42;        // Segmentation fault
+}
+
+int main() {
+    printf("This program will crash!\n");
+    cause_segfault();
+    return 0;
+}
+EOF
+
+# Compile with debugging symbols
+gcc -g crash.c -o crash
+echo "Compilation completed."
+
+# Run the program to generate a core dump
+./crash
+
+# Check if core dump is generated
+core_file=$(ls core* 2>/dev/null)
+if [ -z "$core_file" ]; then
+    echo "No core dump found. Check your system settings."
+    exit 1
+fi
+
+# Analyze the core dump with GDB
+gdb -q ./crash "$core_file" <<EOF
+bt
+info registers
+list
+frame 0
+print ptr
+quit
+EOF
+
+echo "Core dump analysis complete."
