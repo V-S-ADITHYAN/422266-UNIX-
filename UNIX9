@@ -1,0 +1,16 @@
+#rpm
+for pkg in wget curl git vim htop tree; do
+    sudo rpm -i "$pkg.rpm"
+done
+echo "Installation complete using rpm!"
+
+#deb
+for pkg in wget curl git vim htop tree; do
+    sudo dpkg -i "$pkg.deb"
+done
+echo "Installation complete using dpkg!"
+
+#apt
+sudo apt update -y
+sudo apt install -y wget curl git vim htop tree
+echo "Installation complete using apt!"
