@@ -1,0 +1,29 @@
+# 1.
+grep "error" log.txt
+
+# 2.
+grep -o "success" data.txt | wc -l
+
+# 3.
+grep "^[0-9]" records.txt
+
+# 4.
+grep -v "failed" file.txt
+
+# 5.
+grep -l "TODO" *.txt
+
+# 6.
+grep -E -o "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" contacts.txt
+
+# 7.
+grep -i "apple" fruits.txt
+
+# 8.
+grep -E "error|fail" logfile.txt
+
+# 9.
+grep "^[A-Z]" sentences.txt
+
+# 10.
+grep -l "project" *
