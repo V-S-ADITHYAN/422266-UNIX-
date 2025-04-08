@@ -1,0 +1,60 @@
+# CVS SETUP
+echo "Setting up CVS Repository..."
+mkdir ~/cvs_repo
+cd ~/cvs_repo
+cvs -d ~/cvs_repo init
+export CVSROOT=~/cvs_repo
+
+# Create CVS Project
+mkdir ~/my_cvs_project
+cd ~/my_cvs_project
+echo "print('Hello, CVS!')" > main.py
+cvs import -m "Initial import" my_cvs_project v1_0 start
+
+# Checkout and Modify CVS Project
+cd ..
+cvs checkout my_cvs_project
+cd my_cvs_project
+echo "print('Updated in CVS')" >> main.py
+cvs commit -m "Updated main.py"
+
+# Create and Merge a CVS Branch
+cvs tag -b BRANCH_1
+cvs update -r BRANCH_1
+echo "print('Changes in BRANCH_1')" >> main.py
+cvs commit -m "Changes in BRANCH_1"
+cvs update -A
+cvs update -j BRANCH_1
+cvs commit -m "Merged changes from BRANCH_1"
+
+# GIT SETUP
+echo "Setting up Git Repository..."
+mkdir ~/my_git_project
+cd ~/my_git_project
+git init
+echo "print('Hello, Git!')" > main.py
+git add main.py
+git commit -m "Initial commit"
+
+# Create and Switch to a Git Branch
+git branch feature_branch
+git checkout feature_branch
+echo "print('Changes in feature branch')" >> main.py
+git commit -am "Updated main.py in feature_branch"
+
+# Merge Git Branch into Main
+git checkout main
+git merge feature_branch
+
+# Handle Merge Conflicts
+if [ -n "$(git ls-files -u)" ]; then
+    echo "Merge conflict detected. Please resolve manually."
+else
+    git commit -m "Merged feature_branch into main"
+fi
+
+# Tagging and Version Control
+git tag v1.0
+cvs tag v1_0
+
+echo "CVS and Git setup completed successfully!"
