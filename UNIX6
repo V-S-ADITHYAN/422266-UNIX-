@@ -1,0 +1,15 @@
+# Create a backup using cpio
+find "$BACKUP_DIR" -depth -print | cpio -ov > "$BACKUP_FILE"
+
+echo "Backup created successfully using cpio: $BACKUP_FILE"
+
+# To restore:
+cpio -idv < backup.cpio
+
+# Create a compressed tar backup
+tar -czvf "$BACKUP_FILE" "$BACKUP_DIR"
+
+echo "Backup created successfully using tar: $BACKUP_FILE"
+
+# To restore:
+tar -xzvf backup.tar.gz -C /restore/path
