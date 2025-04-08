@@ -1,0 +1,10 @@
+mkdir ADITHYAN
+mkdir ADITHYAN/ARJUN
+cd ADITHYAN/ARJUN
+cal
+ls ..
+who | wc -l
+echo "ADITHYAN" | figlet
+tty
+cd /
+cd ADITHYAN/exercises
