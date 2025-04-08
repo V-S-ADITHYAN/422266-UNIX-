@@ -1,0 +1,42 @@
+# 1.
+echo "Operating System Name: $(uname)"
+echo "Login Name: $(whoami)"
+echo "Host Name: $(hostname)"
+
+# 2.
+echo "Calendar for Jan 2024:"
+cal 01 2024
+echo "Calendar for Feb 1995:"
+cal 02 1995
+echo "Calendar for 9th month of the year 7 A.D:"
+cal 09 0007
+echo "Calendar for the current month:"
+cal
+echo "Current Date (Day Abbreviation, Month Abbreviation, Year): $(date +"%a %b %Y")"
+
+# 3.
+echo "Current Time (12-Hour format): $(date +"%I:%M %p")"
+echo "Current Time (24-Hour format): $(date +"%H:%M")"
+
+# 4.
+echo "Current Date and Time: $(date)"
+
+# 5.
+echo "GOOD MORNING" | figlet
+
+# 6.
+echo "Home Directory: $HOME"
+
+# 7.
+mkdir -p ~/SAMPLE
+
+# 8.
+mkdir -p ~/SAMPLE/TRIAL
+
+# 9.
+cd ~/SAMPLE || exit
+echo "Changed to SAMPLE directory: $(pwd)"
+
+# 10.
+cd ~ || exit
+echo "Changed to Home Directory: $(pwd)"
